@@ -1,0 +1,9 @@
+#regexOutput{
+  min-width: 250px;
+}
+#copyImg{
+  width: 26px;
+}
+#copyImg:hover{
+  cursor: pointer;
+}
