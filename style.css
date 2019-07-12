@@ -1,3 +1,21 @@
+body{
+  background: url("./bg.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  overflow: hidden;
+}
+.container{
+  perspective: 700px;
+}
+.program{
+  opacity: 0;
+  transform: rotateX(40deg);
+  transform-origin:center top; 
+
+}
+.container > .row > .col-md-9{
+  background: rgb(241, 225, 255);
+}
 #regexOutput{
   min-width: 500px;
 }
@@ -6,4 +24,36 @@
 }
 #copyImg:hover{
   cursor: pointer;
+}
+
+/* form{
+  padding-bottom: 20px;
+} */
+
+@keyframes loadBar{
+  0%{
+    width: 0%;
+  }
+  100%{
+    width: 100%;
+  }
+}
+@keyframes programOpacity{
+  0%{
+    opacity: 0;
+    transform: rotateX(40deg);
+  }
+  35%{
+    transform: rotateX(-10deg);
+  }
+  60%{
+    transform: rotateX(5deg);
+  }
+  82%{
+    transform: rotateX(-2deg);
+  }
+  100%{
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
 }
