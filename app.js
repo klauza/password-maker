@@ -257,20 +257,55 @@ const checkForError = () => {
 
 // display special char block
 
-const showOneCharBlock = () => {
+const showOneCharBlock = () => {   
   const charBlock = document.querySelector('.minOneBlock');
-  charBlock.classList.remove('d-none');
-  charBlock.classList.add('d-block');
+  charBlock.classList.remove('invisible');
+  charBlock.classList.add('visible');
 
-  // logic with regex
+  // logic with regex - allow special chars
+  allowSpecialChars = '@\$=!\.:#%';
+
+  regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+  regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
+
 }
-const hideOneCharBlock = () => {
+
+const hideOneCharBlock = () => {    // hide and desactivate special characters
+
+  // along with hiding the 'atLeastOneSpecial' block, also remove checked attribute from it.
+  if(document.querySelector('#specialCharMinTrue').checked){
+    document.querySelector('#specialCharMinTrue').checked = false;
+    atLeastOneSpecial();
+  }
+
   const charBlock = document.querySelector('.minOneBlock');
-  charBlock.classList.remove('d-block');
-  charBlock.classList.add('d-none');
+  charBlock.classList.remove('visible');
+  charBlock.classList.add('invisible');
 
-  // logic with regex
+  // logic with regex - do not allow special chars
+  allowSpecialChars = '';
+  regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+  regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
+  
 }
+
 
 document.querySelector('#specialCharYes').addEventListener('click', showOneCharBlock);
 document.querySelector('#specialCharNo').addEventListener('click', hideOneCharBlock);
+
+
+
+function atLeastOneSpecial(){
+  if(this.checked){   // if check, add regex
+    minOneSpecialChar = '(?=.*[@\$=!\.:#%])';
+
+  regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+  regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
+  } else {    // if not checked, remove regex
+    minOneSpecialChar = '';
+    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
+  }
+}
+
+document.querySelector('#specialCharMinTrue').addEventListener('click', atLeastOneSpecial);
