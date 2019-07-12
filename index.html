@@ -24,20 +24,21 @@
           <h1 class="text-center">Simple password maker</h1>
           
           <div class="row border">
-
+            <!-- MINIMUM LENGTH -->
             <div class="col text-center mt-3 mb-3">
               <p>Minimum letters</p>
               <input type="text" placeholder="0" id="minLetters">
             </div>
 
+            <!-- MAXIMUM LENGTH -->
             <div class="col text-center mt-3 mb-3">
               <p>Maximum letters</p>
               <input type="text" placeholder="infinite" id="maxLetters">
             </div>
-
           </div>
 
           <div class="row border">i dont work yet
+            <!-- ALLOW SPECIAL CHARS -->
             <div class="col text-center mt-3 mb-3">
               <p>allow special chars (@ $ = ! : . : # %)</p>
                 <label for="specialCharYes">yes
@@ -48,32 +49,35 @@
                 </label>
             </div>
 
+            <!-- AT LEAST ONE SPECIAL CHAR -->
             <div class="col text-center mt-3 mb-3">
               <p>has to contain at least 1 special char</p>
                 <label for="specialCharMinTrue">yes
-                  <input type="radio" name="specialCharMin" id="specialCharMinTrue">
-                </label>
-                <label for="specialCharMinFalse">no
-                  <input type="radio" name="specialCharMin" id="specialCharMinFalse" checked>
+                  <input type="checkbox" id="specialCharMinTrue">
                 </label>
             </div>
           </div>
+
+
           <div class="row border">
+            <!-- AT LEAST ONE UPPERCASE -->
             <div class="col text-center mt-3 mb-3">
               <p>Must be at least one uppercase letter</p>
                 <label for="oneUppercase">yes
                   <input type="checkbox" id="oneUppercase">
                 </label>
             </div>
+
+            <!-- AT LEAST ONE NUMBER -->
             <div class="col text-center mt-3 mb-3">
               <p>Must be at least one number</p>
                 <label for="oneNumber">yes
                   <input type="checkbox" id="oneNumber">
                 </label>
             </div>
-
           </div>
 
+          <!-- STARTING CHAR -->
           <div class="row border-left border-right d-block">
             <p class="mb-0 pb-3 text-center">must start with:</p>
           </div>
@@ -102,15 +106,15 @@
             </div>
           </div>
 
-
+          <!-- REGEX DISPLAY -->
           <div class="mx-auto text-center">
             <p class="mt-5 text-success">Your regular expression</p>
             <input type="text text-center" placeholder="regex" id="regexOutput" disabled>
             <img id="copyImg" src="copy.png" />
           </div>
 
+          <!-- FORM -->
           <form>
-
             <div class="form-group mt-5">
               <!-- if you add a class 'is-invalid' here, the 'invalid-feedback' div will show on -->
               <input type="text" class="form-control" id="name" placeholder="password">
@@ -123,8 +127,8 @@
             </div>
 
             <input id="check" type="submit" valid="Submit" value="Check" class="btn btn-primary btn-block">
-
           </form>
+
 
         </div>
       </div>
