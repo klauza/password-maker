@@ -27,32 +27,40 @@ function checkIfEmpty(){
 function validateName(e){
   e.preventDefault();
 
-  try{
-  let re = new RegExp(regexCheck);  // changing string into regex
+  if(min !== NaN && max !== NaN){
 
-  // evaluation
-  if(!re.test(nameInput.value)){  // testing if it's invalid
-    nameInput.classList.add('is-invalid');
-    nameInput.classList.remove('is-valid');
-    nameInput.focus();
+    try{
+    let re = new RegExp(regexCheck);  // changing string into regex
 
-  } else {  //it's valid!
-    nameInput.classList.remove('is-invalid');
-    nameInput.classList.add('is-valid');
-  }
-  }catch(err){
-    nameInput.classList.add('is-invalid');
-    console.log('error occured');
-  }
+    // evaluation
+    if(!re.test(nameInput.value)){  // testing if it's invalid
+      nameInput.classList.add('is-invalid');
+      nameInput.classList.remove('is-valid');
+      nameInput.focus();
+
+    } else {  //it's valid!
+      nameInput.classList.remove('is-invalid');
+      nameInput.classList.add('is-valid');
+    }
+    }catch(err){
+      nameInput.classList.add('is-invalid');
+      nameInput.classList.remove('is-valid');
+      console.log('error occured');
+    }
+  } 
 }
 
 
 document.querySelector('#minLetters').addEventListener("keyup", function(){
+
+  
   const re = /^[0-9]*$/;
 
   if( !re.test(this.value) ){ // fail
     regexOutput.value = 'fail';
-    console.log('min is now: '+'fail');
+    console.log('min is not a number');
+    min = NaN;
+    regexCheck = null;
 
   } else{
     if(this.value !== ''){  // validated
@@ -69,16 +77,19 @@ document.querySelector('#minLetters').addEventListener("keyup", function(){
       regexCheck = `^[a-zA-Z]{0,${max}}$`;
     }
   }
-
+  
 });
 
 
 document.querySelector('#maxLetters').addEventListener("keyup", function(){
+ 
   const re = /^[0-9]*$/;
 
   if( !re.test(this.value) ){ // fail
     regexOutput.value = 'fail';
-    console.log('max is now: '+'fail');
+    console.log('max is not a number');
+    max = NaN;
+    regexCheck = null;
 
   } else{
     if(this.value !== ''){  // validated
@@ -95,7 +106,7 @@ document.querySelector('#maxLetters').addEventListener("keyup", function(){
 
     }
   }
-
+  
 });
 
 
