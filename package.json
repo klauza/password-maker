@@ -10,11 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/klauza/password-maker.git"
   },
-  "keywords": ["awesome password maker"],
+  "keywords": [
+    "awesome password maker"
+  ],
   "author": "klauza",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/klauza/password-maker/issues"
   },
-  "homepage": "https://github.com/klauza/password-maker#readme"
+  "homepage": "https://github.com/klauza/password-maker#readme",
+  "devDependencies": {}
 }
