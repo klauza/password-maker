@@ -5,12 +5,14 @@ var regexCheck = /(?=^[a-zA-Z0-9])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9@\$=!\.:#%]{5,15}
 // must contain at least one 0-9
 // special chars allowed
 // minimum 5 chars, max 15
+// hide special char option if not even chosen to be in regex 
 
 let min=0, max='';
 
 
 document.getElementById('name').addEventListener('blur', checkIfEmpty);   
 document.getElementById('check').addEventListener('click', validateName);
+const starting = document.querySelectorAll('.startingChar input');  // select all inputs of starting char
 
 
 const nameInput = document.getElementById('name');
@@ -38,7 +40,7 @@ function validateName(e){
 
     try{
       let re = new RegExp(regexCheck);  // changing string into regex
-      console.log(re);
+      console.log('testing regex: ',re);
       // evaluation
       if(!re.test(nameInput.value)){  // testing if it's invalid
         nameInput.classList.add('is-invalid');
@@ -114,10 +116,79 @@ document.querySelector('#maxLetters').addEventListener("keyup", function(){
 
     }
   }
-  
 });
 
+/*  ==+==  */
 
+// start variables
+var startLow=''; 
+var startUpp='';
+var startLowUpp='';
+var startLowUppD='';
+var startSpecial='';
+
+const clearStart = () => {  // clear all function
+  startLow='';
+  startUpp='';
+  startLowUpp='';
+  startLowUppD='';
+  startSpecial='';
+}
+
+const startChar = (e) => {
+  let startId = e.target.id;  // get id 
+
+  switch(startId){
+    case 'startWithLowercase':
+      clearStart();
+      startLow = 'a-z';
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      break;
+
+    case 'startWithUppercase':
+      clearStart();
+      startUpp = 'A-Z';
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      break;
+
+    case 'startWithLowUpp':
+      clearStart();
+      startLowUpp = 'a-zA-Z';
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      break;
+
+    case 'startWithLowUppD':
+      clearStart();
+      startLowUppD = 'a-zA-Z0-9';
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      break;
+
+    case 'startWithSpecial':
+      clearStart();
+      startSpecial = '@\$=!\.:#%';
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      break;
+
+    case 'startWithAnything':
+      clearStart();
+      regexOutput.value = `/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`; 
+      regexCheck = `^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`;    // cannot be like this, interfere with min max string
+      break;
+
+    default:
+      console.log('nothing selected');
+  }
+
+  //console.log(startId);
+}
+
+
+starting.forEach((input) => input.addEventListener('click', startChar));
 
 /*
 
