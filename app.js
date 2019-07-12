@@ -1,4 +1,11 @@
-var regexCheck = /^[a-zA-Z]{2,10}$/;  // puts default
+// var regexCheck = /^[a-zA-Z]{0,}$/;  // puts default 
+var regexCheck = /(?=^[a-zA-Z0-9])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9@\$=!\.:#%]{5,15}$/;  // puts default 
+// must start with a-z A-Z 0-9
+// must contain at least one A-Z
+// must contain at least one 0-9
+// special chars allowed
+// minimum 5 chars, max 15
+
 let min=0, max='';
 
 
@@ -30,18 +37,19 @@ function validateName(e){
   if(min !== NaN && max !== NaN){
 
     try{
-    let re = new RegExp(regexCheck);  // changing string into regex
+      let re = new RegExp(regexCheck);  // changing string into regex
+      console.log(re);
+      // evaluation
+      if(!re.test(nameInput.value)){  // testing if it's invalid
+        nameInput.classList.add('is-invalid');
+        nameInput.classList.remove('is-valid');
+        nameInput.focus();
 
-    // evaluation
-    if(!re.test(nameInput.value)){  // testing if it's invalid
-      nameInput.classList.add('is-invalid');
-      nameInput.classList.remove('is-valid');
-      nameInput.focus();
+      } else {  //it's valid!
+        nameInput.classList.remove('is-invalid');
+        nameInput.classList.add('is-valid');
+      }
 
-    } else {  //it's valid!
-      nameInput.classList.remove('is-invalid');
-      nameInput.classList.add('is-valid');
-    }
     }catch(err){
       nameInput.classList.add('is-invalid');
       nameInput.classList.remove('is-valid');
@@ -108,6 +116,7 @@ document.querySelector('#maxLetters').addEventListener("keyup", function(){
   }
   
 });
+
 
 
 /*

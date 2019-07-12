@@ -23,19 +23,70 @@
         <div class="col-md-9 col-lg-6 mx-auto">
           <h1 class="text-center">Simple password maker</h1>
           
-          <div class="row">
+          <div class="row border">
 
-            <div class="col text-center">
-              <p class="mt-5">Minimum letters</p>
-              <input type="text" placeholder="quantity" id="minLetters">
+            <div class="col text-center mt-3 mb-3">
+              <p>Minimum letters</p>
+              <input type="text" placeholder="0" id="minLetters">
             </div>
 
-            <div class="col text-center">
-              <p class="mt-5">Maximum letters</p>
-              <input type="text" placeholder="quantity" id="maxLetters">
+            <div class="col text-center mt-3 mb-3">
+              <p>Maximum letters</p>
+              <input type="text" placeholder="infinite" id="maxLetters">
             </div>
 
           </div>
+
+          <div class="row border">
+            <div class="col text-center mt-3 mb-3">
+              <p>allow special chars (@ $ = ! : . : # %)</p>
+                <label for="specialCharYes">yes
+                  <input type="radio" name="allowSpecialChar" id="specialCharYes">
+                </label>
+                <label for="specialCharNo">no
+                  <input type="radio" name="allowSpecialChar" id="specialCharNo" checked>
+                </label>
+            </div>
+
+            <div class="col text-center mt-3 mb-3">
+              <p>has to contain at least 1 special char</p>
+                <label for="specialCharMinTrue">yes
+                  <input type="radio" name="specialCharMin" id="specialCharMinTrue">
+                </label>
+                <label for="specialCharMinFalse">no
+                  <input type="radio" name="specialCharMin" id="specialCharMinFalse" checked>
+                </label>
+            </div>
+          </div>
+
+          <div class="row border-left border-right d-block">
+            <p class="mb-0 pb-3 text-center">must start with:</p>
+          </div>
+          <div class="startingChar row border-left border-right border-bottom">
+            <div class="col">
+              <label class="d-block" for="startWithLowercase">
+                <input type="radio" name="startingChar" id="startWithLowercase" checked> lowercase
+              </label>
+              <label class="d-block" for="startWithUppercase">
+                <input type="radio" name="startingChar" id="startWithUppercase" checked> uppercase
+              </label>
+              <label class="d-block" for="startWithLowUpp">
+                <input type="radio" name="startingChar" id="startWithLowUpp" checked> lowercase or uppercase
+              </label>
+            </div>
+            <div class="col border-left">
+              <label class="d-block" for="startWithLowUppD">
+                <input type="radio" name="startingChar" id="startWithLowUppD" checked> lowercase, uppercase or digit
+              </label>
+              <label class="d-block" for="startWithSpecial">
+                <input type="radio" name="startingChar" id="startWithSpecial" checked> special char
+              </label>
+              <label class="d-block" for="startWithAnything">
+                <input type="radio" name="startingChar" id="startWithAnything" checked> anything
+              </label>
+            </div>
+          </div>
+
 
           <div class="mx-auto text-center">
             <p class="mt-5 text-success">Your regular expression</p>
@@ -45,20 +96,20 @@
 
           <form>
 
-              <div class="form-group mt-5">
-                <!-- if you add a class 'is-invalid' here, the 'invalid-feedback' div will show on -->
-                <input type="text" class="form-control" id="name" placeholder="name">
-                <div class="invalid-feedback">
-                  regex incorrect, check the inputs
-                </div>
-                <div class="valid-feedback">
-                  All ok
-                </div>
+            <div class="form-group mt-5">
+              <!-- if you add a class 'is-invalid' here, the 'invalid-feedback' div will show on -->
+              <input type="text" class="form-control" id="name" placeholder="password">
+              <div class="invalid-feedback">
+                regex incorrect, check the inputs
               </div>
-  
-              <input id="check" type="submit" valid="Submit" value="Check" class="btn btn-primary btn-block">
-  
-            </form>
+              <div class="valid-feedback">
+                All ok
+              </div>
+            </div>
+
+            <input id="check" type="submit" valid="Submit" value="Check" class="btn btn-primary btn-block">
+
+          </form>
 
         </div>
       </div>
