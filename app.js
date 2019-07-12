@@ -24,7 +24,7 @@ var minOneSpecialChar = '';
 
 
 // default regex
-regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
+let regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
 
 
 document.getElementById('name').addEventListener('blur', checkIfEmpty);   
@@ -32,7 +32,7 @@ document.getElementById('check').addEventListener('click', validateName);
 const starting = document.querySelectorAll('.startingChar input');  // select all inputs of starting char
 
 // min max inputs
-const nameInput = document.getElementById('name');
+const submitInput = document.getElementById('name');
 const submitForm = document.getElementById('check');
 
 // min 1. A-Z checkbox
@@ -49,8 +49,8 @@ const regexOutput = document.querySelector('#regexOutput');
 // FUNCTIONS
 function checkIfEmpty(){
   if(this.value == ''){
-    nameInput.classList.remove('is-invalid');
-    nameInput.classList.remove('is-valid');
+    submitInput.classList.remove('is-invalid');
+    submitInput.classList.remove('is-valid');
   }else{
     return
   }
@@ -66,19 +66,19 @@ function validateName(e){
       let re = new RegExp(regexCheck);  // changing string into regex
       console.log('testing regex: ',re);
       // evaluation
-      if(!re.test(nameInput.value)){  // testing if it's invalid
-        nameInput.classList.add('is-invalid');
-        nameInput.classList.remove('is-valid');
-        nameInput.focus();
+      if(!re.test(submitInput.value)){  // testing if it's invalid
+        submitInput.classList.add('is-invalid');
+        submitInput.classList.remove('is-valid');
+        submitInput.focus();
 
       } else {  //it's valid!
-        nameInput.classList.remove('is-invalid');
-        nameInput.classList.add('is-valid');
+        submitInput.classList.remove('is-invalid');
+        submitInput.classList.add('is-valid');
       }
 
     }catch(err){
-      nameInput.classList.add('is-invalid');
-      nameInput.classList.remove('is-valid');
+      submitInput.classList.add('is-invalid');
+      submitInput.classList.remove('is-valid');
       console.log('error occured');
     }
   } 
@@ -289,7 +289,7 @@ document.querySelector('#specialCharNo').addEventListener('click', hideOneCharBl
 
 
 function atLeastOneSpecial(){
-  if(this.checked){   // if check, add regex
+  if(document.querySelector('#specialCharMinTrue').checked){   // if "At least 1 special block" is checked, add regex
     minOneSpecialChar = '(?=.*[@\$=!\.:#%])';
 
   regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
