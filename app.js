@@ -1,5 +1,4 @@
-// var regexCheck = /^[a-zA-Z]{0,}$/;  // puts default 
-var regexCheck = /(?=^[a-zA-Z0-9])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9@\$=!\.:#%]{5,15}$/;  // puts default 
+
 // must start with a-z A-Z 0-9
 // must contain at least one A-Z
 // must contain at least one 0-9
@@ -9,6 +8,14 @@ var regexCheck = /(?=^[a-zA-Z0-9])(?=.*[A-Z])(?=.*\d)[a-zA-Z0-9@\$=!\.:#%]{5,15}
 
 let min=0, max='';
 
+// start variables
+var startLow=''; 
+var startUpp='';
+var startLowUpp='';
+var startLowUppD='';
+var startSpecial='';
+
+var regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
 
 document.getElementById('name').addEventListener('blur', checkIfEmpty);   
 document.getElementById('check').addEventListener('click', validateName);
@@ -76,15 +83,15 @@ document.querySelector('#minLetters').addEventListener("keyup", function(){
     if(this.value !== ''){  // validated
       console.log('min is now: '+ parseInt(this.value, 10));
       min = this.value;
-      regexOutput.value = `/^[a-zA-Z]{${min},${max}}$/`;
-      regexCheck = `^[a-zA-Z]{${min},${max}}$`;
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
       
 
     } else{ // validated as 0
       min = 0;
       console.log('max is now: '+'0');
-      regexOutput.value = `/^[a-zA-Z]{0,${max}}$/`;
-      regexCheck = `^[a-zA-Z]{0,${max}}$`;
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
     }
   }
   
@@ -105,14 +112,14 @@ document.querySelector('#maxLetters').addEventListener("keyup", function(){
     if(this.value !== ''){  // validated
       console.log('max is now: '+ parseInt(this.value, 10));
       max = this.value;
-      regexOutput.value = `/^[a-zA-Z]{${min},${max}}$/`;
-      regexCheck = `^[a-zA-Z]{${min},${max}}$`;
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
 
     } else{ // validated as infinite
       max = '';
       console.log('max is now: '+'infinite');
-      regexOutput.value = `/^[a-zA-Z]{${min},${max}}$/`;
-      regexCheck = `^[a-zA-Z]{${min},${max}}$`;
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
 
     }
   }
@@ -120,12 +127,7 @@ document.querySelector('#maxLetters').addEventListener("keyup", function(){
 
 /*  ==+==  */
 
-// start variables
-var startLow=''; 
-var startUpp='';
-var startLowUpp='';
-var startLowUppD='';
-var startSpecial='';
+
 
 const clearStart = () => {  // clear all function
   startLow='';

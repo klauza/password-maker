@@ -37,14 +37,14 @@
 
           </div>
 
-          <div class="row border">
+          <div class="row border">i dont work yet
             <div class="col text-center mt-3 mb-3">
               <p>allow special chars (@ $ = ! : . : # %)</p>
                 <label for="specialCharYes">yes
-                  <input type="radio" name="allowSpecialChar" id="specialCharYes">
+                  <input type="radio" name="allowSpecialChar" id="specialCharYes" checked>
                 </label>
                 <label for="specialCharNo">no
-                  <input type="radio" name="allowSpecialChar" id="specialCharNo" checked>
+                  <input type="radio" name="allowSpecialChar" id="specialCharNo">
                 </label>
             </div>
 
@@ -58,6 +58,21 @@
                 </label>
             </div>
           </div>
+          <div class="row border">i dont work yet
+            <div class="col text-center mt-3 mb-3">
+              <p>Must be at least one uppercase letter</p>
+                <label for="oneNumber">yes
+                  <input type="checkbox" id="oneUppercase" checked>
+                </label>
+            </div>
+            <div class="col text-center mt-3 mb-3">
+              <p>Must be at least one number</p>
+                <label for="oneNumber">yes
+                  <input type="checkbox" id="oneNumber" checked>
+                </label>
+            </div>
+
+          </div>
 
           <div class="row border-left border-right d-block">
             <p class="mb-0 pb-3 text-center">must start with:</p>
@@ -68,21 +83,21 @@
                 <input type="radio" name="startingChar" id="startWithLowercase" checked> lowercase
               </label>
               <label class="d-block" for="startWithUppercase">
-                <input type="radio" name="startingChar" id="startWithUppercase" checked> uppercase
+                <input type="radio" name="startingChar" id="startWithUppercase"> uppercase
               </label>
               <label class="d-block" for="startWithLowUpp">
-                <input type="radio" name="startingChar" id="startWithLowUpp" checked> lowercase or uppercase
+                <input type="radio" name="startingChar" id="startWithLowUpp"> lowercase or uppercase
               </label>
             </div>
             <div class="col border-left">
               <label class="d-block" for="startWithLowUppD">
-                <input type="radio" name="startingChar" id="startWithLowUppD" checked> lowercase, uppercase or digit
+                <input type="radio" name="startingChar" id="startWithLowUppD"> lowercase, uppercase or digit
               </label>
               <label class="d-block" for="startWithSpecial">
-                <input type="radio" name="startingChar" id="startWithSpecial" checked> special char
+                <input type="radio" name="startingChar" id="startWithSpecial"> special char
               </label>
               <label class="d-block" for="startWithAnything">
-                <input type="radio" name="startingChar" id="startWithAnything" checked> anything
+                <input type="radio" name="startingChar" id="startWithAnything" disabled> anything
               </label>
             </div>
           </div>
