@@ -1,10 +1,7 @@
-
-// must start with a-z A-Z 0-9
-// must contain at least one A-Z
-// must contain at least one 0-9
-// special chars allowed
-// minimum 5 chars, max 15
-// hide special char option if not even chosen to be in regex 
+// function to allow whitespaces // spacebar
+// allow user to copy regex from disabled input
+// Refactor needed
+// ---------------
 
 let min=0, max='';
 
@@ -27,7 +24,7 @@ var minOneSpecialChar = '';
 
 
 // default regex
-regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
 
 
 document.getElementById('name').addEventListener('blur', checkIfEmpty);   
@@ -90,29 +87,25 @@ function validateName(e){
 // Must be at least uppercase funcion
 function oneUpperCase(){
   if(this.checked){
-    console.log('adds A-Z');
     minOneUppercase = '(?=.*[A-Z])';
-    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
   } else {
-    console.log('removes A-Z');
     minOneUppercase = '';
-    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
   }
 }
 
 function oneNumber(){
   if(this.checked){
-    console.log('adds 0-9');
     minOneNumber = '(?=.*[0-9])';
-    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
   } else {
-    console.log('removes 0-9');
     minOneNumber = '';
-    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+    regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+    regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
   }
 }
 
@@ -131,15 +124,15 @@ document.querySelector('#minLetters').addEventListener("keyup", function(){
     if(this.value !== ''){  // validated
       console.log('min is now: '+ parseInt(this.value, 10));
       min = this.value;
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
       
 
     } else{ // validated as 0
       min = 0;
       console.log('max is now: '+'0');
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
     }
   }
   
@@ -160,14 +153,14 @@ document.querySelector('#maxLetters').addEventListener("keyup", function(){
     if(this.value !== ''){  // validated
       console.log('max is now: '+ parseInt(this.value, 10));
       max = this.value;
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
 
     } else{ // validated as infinite
       max = '';
       console.log('max is now: '+'infinite');
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
 
     }
   }
@@ -193,36 +186,36 @@ const startChar = (e) => {
     case 'startWithLowercase':
       clearStart();
       startLow = 'a-z';
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
       break;
 
     case 'startWithUppercase':
       clearStart();
       startUpp = 'A-Z';
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
       break;
 
     case 'startWithLowUpp':
       clearStart();
       startLowUpp = 'a-zA-Z';
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
       break;
 
     case 'startWithLowUppD':
       clearStart();
       startLowUppD = 'a-zA-Z0-9';
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
       break;
 
     case 'startWithSpecial':
       clearStart();
       startSpecial = '@\$=!\.:#%';
-      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`;
-      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+      regexOutput.value = `/(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$/`;
+      regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
       break;
 
     case 'startWithAnything':
