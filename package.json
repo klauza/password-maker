@@ -1,0 +1,20 @@
+{
+  "name": "password-maker",
+  "version": "1.0.0",
+  "description": "The project provides for user the ability to generate regular expression password. <br/>\r Full string validation is provided to the website.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klauza/password-maker.git"
+  },
+  "keywords": ["awesome password maker"],
+  "author": "klauza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/klauza/password-maker/issues"
+  },
+  "homepage": "https://github.com/klauza/password-maker#readme"
+}
