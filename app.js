@@ -9,20 +9,26 @@
 let min=0, max='';
 
 // start variables
-var startLow='a-z'; 
-var startUpp='';
-var startLowUpp='';
-var startLowUppD='';
-var startSpecial='';
+var startLow = 'a-z'; 
+var startUpp = '';
+var startLowUpp = '';
+var startLowUppD = '';
+var startSpecial = '';
 
 // at least one uppercase
-var minOneUppercase='';
+var minOneUppercase = '';
 // at least on enumber
-var minOneNumber='';
+var minOneNumber = '';
+
+// allow special chars
+var allowSpecialChars = '';
+// has to contain at least one special char
+var minOneSpecialChar = '';
+
 
 // default regex
-
 regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`
+
 
 document.getElementById('name').addEventListener('blur', checkIfEmpty);   
 document.getElementById('check').addEventListener('click', validateName);
@@ -36,6 +42,7 @@ const submitForm = document.getElementById('check');
 document.querySelector('#oneUppercase').addEventListener('click', oneUpperCase);
 // min 1. 0-9 checkbox
 document.querySelector('#oneNumber').addEventListener('click', oneNumber);
+
 
 
 const regexOutput = document.querySelector('#regexOutput');
@@ -246,3 +253,24 @@ const checkForError = () => {
 }
 
 */
+
+
+// display special char block
+
+const showOneCharBlock = () => {
+  const charBlock = document.querySelector('.minOneBlock');
+  charBlock.classList.remove('d-none');
+  charBlock.classList.add('d-block');
+
+  // logic with regex
+}
+const hideOneCharBlock = () => {
+  const charBlock = document.querySelector('.minOneBlock');
+  charBlock.classList.remove('d-block');
+  charBlock.classList.add('d-none');
+
+  // logic with regex
+}
+
+document.querySelector('#specialCharYes').addEventListener('click', showOneCharBlock);
+document.querySelector('#specialCharNo').addEventListener('click', hideOneCharBlock);
