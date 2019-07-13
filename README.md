@@ -1,7 +1,10 @@
 ### **About**
 
-The project provides for user the ability to generate regular expression password. <br/>
-Full string validation is provided to the website.
+The project generates regular expression password from the chosen settings. <br/>
+After the process, the code will be ready to be copied.  <br/>
+
+**Other info:** <br/>
+page has full validation handling
 
 <br/>
 
