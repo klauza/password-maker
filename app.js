@@ -1,7 +1,8 @@
 // future tasks :
-// more css
+// star with any char function
 // function to allow whitespaces // spacebar
 // allow user to copy regex from disabled input
+// css
 // ---------------
 
 
@@ -102,28 +103,6 @@ function validateSubmit(e){
   } 
 }
 
-// Must be at least one uppercase
-function oneUpperCase(){
-  if(this.checked){
-    minOneUppercase = '(?=.*[A-Z])';
-    setRegex();
-  } else {
-    minOneUppercase = '';
-    setRegex();
-  }
-}
-
-// Must be at least one number
-function oneNumber(){
-  if(this.checked){
-    minOneNumber = '(?=.*[0-9])';
-    setRegex();
-  } else {
-    minOneNumber = '';
-    setRegex();
-  }
-}
-
 // minimum quantity of chars
 function minLength(){
 
@@ -175,6 +154,72 @@ function maxLength(){
     }
   }
 };
+
+// Must be at least one uppercase
+function oneUpperCase(){
+  if(this.checked){
+    minOneUppercase = '(?=.*[A-Z])';
+    setRegex();
+  } else {
+    minOneUppercase = '';
+    setRegex();
+  }
+}
+
+// Must be at least one number
+function oneNumber(){
+  if(this.checked){
+    minOneNumber = '(?=.*[0-9])';
+    setRegex();
+  } else {
+    minOneNumber = '';
+    setRegex();
+  }
+}
+
+// display [minimum one Char] block
+function showOneCharBlock(){   
+  const charBlock = document.querySelector('.minOneBlock');
+  charBlock.classList.remove('invisible');
+  charBlock.classList.add('visible');
+
+  // logic with regex - allow special chars
+  allowSpecialChars = '@\$=!\.:#%';
+
+  setRegex();
+
+}
+
+// hide [minimum one Char] block & substract
+function hideOneCharBlock(){    // hide and desactivate special characters
+
+  // remove checked attribute from hidden block
+  if(document.querySelector('#specialCharMinTrue').checked){
+    document.querySelector('#specialCharMinTrue').checked = false;
+    atLeastOneSpecial();
+  }
+
+  const charBlock = document.querySelector('.minOneBlock');
+  charBlock.classList.remove('visible');
+  charBlock.classList.add('invisible');
+
+  // logic with regex - do not allow special chars
+  allowSpecialChars = '';
+  setRegex();
+  
+}
+
+// minimum one special chars
+function atLeastOneSpecial(){
+  if(document.querySelector('#specialCharMinTrue').checked){   // if "At least 1 special block" is checked, add regex
+    minOneSpecialChar = '(?=.*[@\$=!\.:#%])';
+
+    setRegex();
+  } else {    // if not checked, remove regex
+    minOneSpecialChar = '';
+    setRegex();
+  }
+}
 
 
 /*  ==+==  */
@@ -229,50 +274,5 @@ function startChar(e){
       regexOutput.value = `/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`; 
       regexCheck = `^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`;    // cannot be like this, interfere with min max string
       break;
-  }
-}
-
-
-// display [minimum one Char] block
-function showOneCharBlock(){   
-  const charBlock = document.querySelector('.minOneBlock');
-  charBlock.classList.remove('invisible');
-  charBlock.classList.add('visible');
-
-  // logic with regex - allow special chars
-  allowSpecialChars = '@\$=!\.:#%';
-
-  setRegex();
-
-}
-
-// hide [minimum one Char] block & substract
-function hideOneCharBlock(){    // hide and desactivate special characters
-
-  // remove checked attribute from hidden block
-  if(document.querySelector('#specialCharMinTrue').checked){
-    document.querySelector('#specialCharMinTrue').checked = false;
-    atLeastOneSpecial();
-  }
-
-  const charBlock = document.querySelector('.minOneBlock');
-  charBlock.classList.remove('visible');
-  charBlock.classList.add('invisible');
-
-  // logic with regex - do not allow special chars
-  allowSpecialChars = '';
-  setRegex();
-  
-}
-
-// minimum one special chars
-function atLeastOneSpecial(){
-  if(document.querySelector('#specialCharMinTrue').checked){   // if "At least 1 special block" is checked, add regex
-    minOneSpecialChar = '(?=.*[@\$=!\.:#%])';
-
-    setRegex();
-  } else {    // if not checked, remove regex
-    minOneSpecialChar = '';
-    setRegex();
   }
 }
