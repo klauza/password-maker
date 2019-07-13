@@ -1,11 +1,12 @@
-body, html{
-  height: 100%;
+body{
+  min-height: 100vh;
 }
 body{
   background: url("../media/bg.jpg");
 
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat;
+  background-position: center;
   overflow-y: scroll;
   overflow-x: hidden; 
 
