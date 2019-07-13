@@ -1,7 +1,5 @@
 const loadingBar = document.querySelector('.progress');
 
-console.log(loadingBar);
-
 window.addEventListener('load', loadFunc);
 
 function loadFunc(){
