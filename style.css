@@ -12,24 +12,32 @@ body{
   opacity: 0;
   transform: rotateX(40deg);
   transform-origin:center top; 
-
 }
+
 .container > .row > .col-md-9{
   background: rgb(241, 225, 255);
 }
-#regexOutput{
-  min-width: 500px;
-}
-#copyImg{
-  width: 26px;
-}
+
+
 #copyImg:hover{
   cursor: pointer;
 }
 
-/* form{
-  padding-bottom: 20px;
-} */
+.display-regex{
+
+}
+
+#regexOutput{
+  width: 100%;
+  font-size: 14px;
+}
+#copyImg{
+  width: 5%;
+}
+#copyImg img{
+  width: 100%;
+}
+
 
 @keyframes loadBar{
   0%{
