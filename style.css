@@ -5,28 +5,14 @@ body{
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.container{
-  perspective: 700px;
-}
-.program{
-  opacity: 0;
-  transform: rotateX(40deg);
-  transform-origin:center top; 
+::-webkit-scrollbar {
+  width: 0px;
 }
 
-.container > .row > .col-md-9{
-  background: rgb(241, 225, 255);
-}
-
-
+/*regex output css*/
 #copyImg:hover{
   cursor: pointer;
 }
-
-.display-regex{
-
-}
-
 #regexOutput{
   width: 100%;
   font-size: 14px;
@@ -38,31 +24,24 @@ body{
   width: 100%;
 }
 
+/* loading bar & animation */
+.container{
+  perspective: 700px;
+}
+.program{
+  opacity: 0;
+  transform: rotateX(40deg);
+  transform-origin:center top; 
+}
 
 @keyframes loadBar{
-  0%{
-    width: 0%;
-  }
-  100%{
-    width: 100%;
-  }
+  0%{ width: 0%; }
+  100%{ width: 100%; }
 }
 @keyframes programOpacity{
-  0%{
-    opacity: 0;
-    transform: rotateX(40deg);
-  }
-  35%{
-    transform: rotateX(-10deg);
-  }
-  60%{
-    transform: rotateX(5deg);
-  }
-  82%{
-    transform: rotateX(-2deg);
-  }
-  100%{
-    opacity: 1;
-    transform: rotateX(0deg);
-  }
+  0%{ transform: rotateX(40deg); opacity: 0; }
+  35%{ transform: rotateX(-10deg); }
+  60%{ transform: rotateX(5deg); }
+  82%{ transform: rotateX(-2deg); }
+  100%{ transform: rotateX(0deg); opacity: 1; }
 }

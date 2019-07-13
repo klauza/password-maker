@@ -11,4 +11,5 @@ page has full validation handling
 ---
 
 copy icon taken from [link](https://www.flaticon.com) <br/>
-key icon taken from [link](http://www.pngall.com)
+key icon taken from [link](http://www.pngall.com) <br/>
+background image taken from [link](https://www.freepik.com/)
