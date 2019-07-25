@@ -35,12 +35,47 @@ body{
 /* loading bar & animation */
 .container{
   perspective: 700px;
+  position: relative;
 }
 .program{
   opacity: 0;
   transform: rotateX(40deg);
   transform-origin:center top; 
 }
+
+.icons-container{
+  position: absolute;
+  top: 0; right: 0;
+}
+.icons-container a{
+  text-decoration: none;
+}
+.icons-container i{
+  opacity: 0;
+  transition: all 300ms ease;
+  display: block;
+  font-size: 40px;
+  color: white;
+  transform: translatex(0px) rotateZ(-195deg);
+}
+.icons-container a:nth-child(2) i{
+  margin-top: 25px;
+  font-size: 2.6em;
+}
+.icons-container i:hover{
+  cursor: pointer;
+  color: rgb(202, 220, 255);
+}
+@media(max-width: 750px){
+  .icons-container{
+    top: -70px; left: 50%;
+    transform: translateX(-50%);
+  }
+  .icons-container i{
+    display: inline-block;
+  }
+}
+
 
 @keyframes loadBar{
   0%{ width: 0%; }
