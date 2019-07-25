@@ -1,5 +1,4 @@
 // future tasks :
-// star with any char function
 // function to allow whitespaces // spacebar
 // allow user to copy regex from disabled input
 // css
@@ -84,7 +83,7 @@ function validateSubmit(e){
     try{
       let re = new RegExp(regexCheck);  // changing string into regex
       console.log('testing regex: ',re);
-      // evaluation
+     
       if(!re.test(submitInput.value)){  // testing if it's invalid
         submitInput.classList.add('is-invalid');
         submitInput.classList.remove('is-valid');
@@ -93,6 +92,7 @@ function validateSubmit(e){
       } else {  //it's valid!
         submitInput.classList.remove('is-invalid');
         submitInput.classList.add('is-valid');
+        // tell user that he can copy regex
       }
 
     }catch(err){
@@ -177,13 +177,13 @@ function oneNumber(){
   }
 }
 
-// display [minimum one Char] block
+// display [minimum one Char] block && allow special char
 function showOneCharBlock(){   
   const charBlock = document.querySelector('.minOneBlock');
   charBlock.classList.remove('invisible');
   charBlock.classList.add('visible');
   
-  document.querySelector('#startWithSpecial').disabled = false;
+  // document.querySelector('#startWithSpecial').disabled = false;
   
 
   // logic with regex - allow special chars
@@ -203,12 +203,14 @@ function hideOneCharBlock(){    // hide and desactivate special characters
   }
 
   //disable 'must start with char' if is checked
-  document.querySelector('#startWithSpecial').disabled = true;
-  if(document.querySelector('#startWithSpecial').checked){
+  // document.querySelector('#startWithSpecial').disabled = true;
+  if(document.querySelector('#startWithSpecial').checked || document.querySelector('#startWithAnything').checked){
     document.querySelector('#startWithLowercase').checked = true;
     clearStart();
     startLow = 'a-z';
   }
+
+
 
   const charBlock = document.querySelector('.minOneBlock');
   charBlock.classList.remove('visible');
@@ -277,13 +279,17 @@ function startChar(e){
     case 'startWithSpecial':
       clearStart();
       startSpecial = '@\$=!\.:#%';
+
+      document.querySelector('#specialCharYes').click();
       setRegex();
       break;
 
     case 'startWithAnything':
       clearStart();
-      regexOutput.value = `/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$/`; 
-      regexCheck = `^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9@\$=!\.:#%]{${min},${max}}$`;    // cannot be like this, interfere with min max string
+      startSpecial = 'a-zA-Z0-9@\$=!\.:#%';
+
+      document.querySelector('#specialCharYes').click();
+      setRegex();
       break;
   }
 }
