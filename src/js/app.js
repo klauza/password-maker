@@ -182,6 +182,9 @@ function showOneCharBlock(){
   const charBlock = document.querySelector('.minOneBlock');
   charBlock.classList.remove('invisible');
   charBlock.classList.add('visible');
+  
+  document.querySelector('#startWithSpecial').disabled = false;
+  
 
   // logic with regex - allow special chars
   allowSpecialChars = '@\$=!\.:#%';
@@ -197,6 +200,14 @@ function hideOneCharBlock(){    // hide and desactivate special characters
   if(document.querySelector('#specialCharMinTrue').checked){
     document.querySelector('#specialCharMinTrue').checked = false;
     atLeastOneSpecial();
+  }
+
+  //disable 'must start with char' if is checked
+  document.querySelector('#startWithSpecial').disabled = true;
+  if(document.querySelector('#startWithSpecial').checked){
+    document.querySelector('#startWithLowercase').checked = true;
+    clearStart();
+    startLow = 'a-z';
   }
 
   const charBlock = document.querySelector('.minOneBlock');
