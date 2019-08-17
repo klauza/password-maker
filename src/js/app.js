@@ -1,6 +1,5 @@
 // future tasks :
 // function to allow whitespaces // spacebar
-// allow user to copy regex from disabled input
 // css
 // ---------------
 
@@ -27,7 +26,7 @@ var startLow = 'a-z',
 
 // default regex
 let regexCheck = `(?=^[${startLow}${startUpp}${startLowUpp}${startLowUppD}${startSpecial}])${minOneUppercase}${minOneNumber}${minOneSpecialChar}[a-zA-Z0-9${allowSpecialChars}]{${min},${max}}$`
-
+document.querySelector('#regexOutput').value = regexCheck;
 
 // submit form
 const submitInput = document.getElementById('name');

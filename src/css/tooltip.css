@@ -1,0 +1,39 @@
+#copyImg{
+  position: relative;
+}
+#copyImg:after {
+  content: 'Copy';
+  position: absolute;
+  top: 0; left: 65px;
+  background: rgb(10, 159, 245);
+  width: 50px;
+  line-height: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: white;
+  display: none;
+  opacity: 0;
+  border: 2px solid black;
+}
+#copyImg:before {
+  position: absolute;
+  top: 4.5px; left: 58px;
+  content: '';
+  width: 0; 
+  height: 0; 
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent; 
+  
+  border-right: 7px solid rgb(0, 0, 0); 
+  display: none;
+  opacity: 0;
+}
+
+#copyImg:hover:after{
+  opacity: 1;
+  display: block;
+}
+#copyImg:hover:before{
+  opacity: 1;
+  display: block;
+}
