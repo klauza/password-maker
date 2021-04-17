@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "The project provides for user the ability to generate regular expression password. <br/>\r Full string validation is provided to the website.",
   "main": "app.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/klauza/password-maker.git"
@@ -19,5 +17,8 @@
     "url": "https://github.com/klauza/password-maker/issues"
   },
   "homepage": "https://github.com/klauza/password-maker#readme",
-  "devDependencies": {}
+  "devDependencies": {},
+  "dependencies": {
+    "serve": "^11.3.2"
+  }
 }
